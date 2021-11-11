@@ -48,8 +48,18 @@ For instance, if a student with studentId 1 is the president of a club with club
 
 The **Enrollment** will use a superkey comprised of the studentId and clubId fields.
 
-### Domain Object to Domain Object Relationship Description
+### Domain Object to Domain Object Relationship Description  
 
-### Portable Enumeration Description
+There is a one-to-many relationship between a Club and a Location because a Club can only meet at one Location, but a Location can host many different Clubs.
+
+### Portable Enumeration Description  
+
+Our enumeration is **MembershipStatus** which represents the membership status of a Student for a Club. The possible values are:
+- MEMBER: the Student is just a member of a club and does not hold any leadership positions
+- PRESIDENT: the Student is the President of the club
+- VICE PRESIDENT: the Student is the Vice President of the club
+- TREASURER: the Student is the Treasurer of the club
+- SECRETARY: the Student is the Secretary of the club
+- INACTIVE: the Student is an inactive member of the club (e.x. they have not participated in a long time, have graduated, etc.)
 
 ### User Interface Requirements Description
