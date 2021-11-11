@@ -39,6 +39,15 @@ Our other domain object data model is a **Location** which represents a location
 
 ### User to Domain Object Relationship Description
 
+Our user (Student) can be a member of any number of Clubs, and Clubs can have any number of Students as members. Therefore, there is a many-to-many relationship between Clubs and Students. In order to reify the relationship and also include the membership status of a Student for a particular Club, we created an **Enrollment** class. There is a one-to-many relationship between a Club and an Enrollment, and also a one-to-many relationship between a Student and an Enrollment. An Enrollment has the following fields:
+- studentId (Integer, foreign key): the NUID of the student in this enrollment record
+- clubId(Integer, foreign key): the id of the club that the student in this record is a member of
+- membershipStatus (MembershipStatus): the membership status (our defined enumeration) of the student for the particular club in this record
+
+For instance, if a student with studentId 1 is the president of a club with clubId 3, the record would be (studentId: 1, clubId: 3, membershipStatus: PRESIDENT). 
+
+The **Enrollment** will use a superkey comprised of the studentId and clubId fields.
+
 ### Domain Object to Domain Object Relationship Description
 
 ### Portable Enumeration Description
