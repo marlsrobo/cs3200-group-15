@@ -11,7 +11,7 @@ https://github.com/marlsrobo/cs3200-group-15/blob/b42a2d263b2849505a3ffce2958ce1
 
 ### User Data Model Description  
 
-Our user data model is a basic representation of a Student at Northeastern. We do not store any academic information for a student, we simply store the follow fields:
+Our user data model is a basic representation of a **Student** at Northeastern. We do not store any academic information for a student, we simply store the follow fields:
 - id (Integer, primary key): the unique NUID of the student 
 - firstName (String): the student's first name
 - lastName (String): the student's last name
@@ -22,7 +22,7 @@ Our user data model is a basic representation of a Student at Northeastern. We d
 
 ### Domain Object Data Models Descriptions
 
-Our first domain object data model is a Club which represents a single Northeastern club. The object contains the following fields:  
+Our first domain object data model is a **Club** which represents a single Northeastern club. The object contains the following fields:  
 - id (Integer, primary key): the club's unique id
 - category (String): the club's category (e.x. fraternity, sport, religious, etc.)
 - advisor (String): the full name of the academic advisor of the club
@@ -30,7 +30,7 @@ Our first domain object data model is a Club which represents a single Northeast
 - size (Integer): the number of members in the club
 - locationId (Integer, foreign key): the id of the location that this club meets at regularly
 
-Our other domain object data model is a Location which represents a location on one of Northeastern's campuses that clubs can meet at. The object contains the following fields:
+Our other domain object data model is a **Location** which represents a location on one of Northeastern's campuses that clubs can meet at. The object contains the following fields:
 - id (Integer, primary key): the location's unique id
 - virtual (Boolean): whether this location is virtual or not (e.x. held on Zoom, Teams, or in person)
 - campus (String): the name of the Northeastern campus where this location is found (e.x. Boston, Seattle, etc.)
