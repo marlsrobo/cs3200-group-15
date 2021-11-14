@@ -25,6 +25,7 @@ Our user data model is a basic representation of a **Student** at Northeastern. 
 Our first domain object data model is a **Club** which represents a single Northeastern club. The object contains the following fields:  
 - clubId (Integer, primary key): the club's unique id
 - locationId (Integer, foreign key): the id of the location that this club meets at regularly
+- name (String): the name of the club
 - category (String): the club's category (e.x. fraternity, sport, religious, etc.)
 - advisor (String): the full name of the academic advisor of the club
 - budget (Unsigned Integer): the club's budget represented in USD
