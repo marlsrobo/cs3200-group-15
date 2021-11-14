@@ -12,7 +12,7 @@ https://github.com/marlsrobo/cs3200-group-15/blob/04ff9fd8522697eb88c0d151bd3f48
 ### User Data Model Description  
 
 Our user data model is a basic representation of a **Student** at Northeastern. We do not store any academic information for a student, we simply store the follow fields:
-- id (Integer, primary key): the unique NUID of the student 
+- studentId (Integer, primary key): the unique NUID of the student 
 - firstName (String): the student's first name
 - lastName (String): the student's last name
 - username (String): the student's username
@@ -23,30 +23,30 @@ Our user data model is a basic representation of a **Student** at Northeastern. 
 ### Domain Object Data Models Descriptions
 
 Our first domain object data model is a **Club** which represents a single Northeastern club. The object contains the following fields:  
-- id (Integer, primary key): the club's unique id
+- clubId (Integer, primary key): the club's unique id
+- locationId (Integer, foreign key): the id of the location that this club meets at regularly
 - category (String): the club's category (e.x. fraternity, sport, religious, etc.)
 - advisor (String): the full name of the academic advisor of the club
-- budget (Integer): the club's budget represented in USD
-- size (Integer): the number of members in the club
-- locationId (Integer, foreign key): the id of the location that this club meets at regularly
+- budget (Unsigned Integer): the club's budget represented in USD
+- capacity (Unsigned Integer): the maximum number of members that can be in the club
 
 Our other domain object data model is a **Location** which represents a location on one of Northeastern's campuses that clubs can meet at. The object contains the following fields:
-- id (Integer, primary key): the location's unique id
+- locationId (Integer, primary key): the location's unique id
 - virtual (Boolean): whether this location is virtual or not (e.x. held on Zoom, Teams, or in person)
 - campus (String): the name of the Northeastern campus where this location is found (e.x. Boston, Seattle, etc.)
 - building (String): the name of the building where the location is found (e.x. Hurtig, Richards, etc.)
-- roomNumber (Integer): the room number of the location
+- roomNumber (Unsigned Integer): the room number of the location
 
 ### User to Domain Object Relationship Description
 
 Our user (Student) can be a member of any number of Clubs, and Clubs can have any number of Students as members. Therefore, there is a many-to-many relationship between Clubs and Students. In order to reify the relationship and also include the membership status of a Student for a particular Club, we created an **Enrollment** class. There is a one-to-many relationship between a Club and an Enrollment, and also a one-to-many relationship between a Student and an Enrollment. An Enrollment has the following fields:
 - studentId (Integer, foreign key): the NUID of the student in this enrollment record
 - clubId(Integer, foreign key): the id of the club that the student in this record is a member of
-- membershipStatus (MembershipStatus): the membership status (our defined enumeration) of the student for the particular club in this record
+- membershipStatus (MembershipStatus, foreign key): the membership status (our defined enumeration) of the student for the particular club in this record
 
 For instance, if a student with studentId 1 is the president of a club with clubId 3, the record would be (studentId: 1, clubId: 3, membershipStatus: PRESIDENT). 
 
-The **Enrollment** will use a superkey comprised of the studentId and clubId fields.
+The **Enrollment** has a superkey comprised of the studentId and clubId fields so that we can ensure that a student can only have 1 membership status per club that they are enrolled in.
 
 ### Domain Object to Domain Object Relationship Description  
 
