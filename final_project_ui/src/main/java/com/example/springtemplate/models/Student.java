@@ -17,7 +17,7 @@ public class Student {
     private String password;
     private String email;
     private Date dateOfBirth;
-
+ 
     @OneToMany(mappedBy = "enrollment")
     @JsonIgnore
     private List<Enrollment> enrollments;
