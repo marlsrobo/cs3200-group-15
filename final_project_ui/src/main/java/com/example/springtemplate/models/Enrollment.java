@@ -18,10 +18,12 @@ public class Enrollment {
 
     @ManyToOne
     @JsonIgnore
+    @Id
     private Student student;
 
     @ManyToOne
     @JsonIgnore
+    @Id
     private Club club;
 
     @Column(columnDefinition = "ENUM('MEMBER', 'PRESIDENT', 'VICE_PRESIDENT', 'TREASURER', 'SECRETARY', 'INACTIVE')")

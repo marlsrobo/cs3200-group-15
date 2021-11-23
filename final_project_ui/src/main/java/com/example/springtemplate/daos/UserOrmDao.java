@@ -1,7 +1,6 @@
 package com.example.springtemplate.daos;
 
 import com.example.springtemplate.models.User;
-import com.example.springtemplate.repositories.UserRestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,6 +1,5 @@
 package com.example.springtemplate.daos;
 
-import com.example.springtemplate.repositories.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
