@@ -1,6 +1,9 @@
 package com.example.springtemplate.models;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name="students")
@@ -15,7 +18,9 @@ public class Student {
     private String email;
     private Date dateOfBirth;
 
-    // TODO add enrollement field
+    @OneToMany(mappedBy = "enrollment")
+    @JsonIgnore
+    private List<Enrollment> enrollments;
 
     public Integer getStudentId() {
         return studentId;
@@ -73,7 +78,16 @@ public class Student {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public Student(Integer studentId, String firstName, String lastName, String username, String password, String email, Date dateOfBirth) {
+    public List<Enrollment> getEnrollments() {
+        return enrollments;
+    }
+
+    public void setEnrollments(List<Enrollment> enrollments) {
+        this.enrollments = enrollments;
+    }
+
+    public Student(Integer studentId, String firstName, String lastName, String username, String password, String email, Date dateOfBirth,
+                   List<Enrollment> enrollments) {
         this.studentId = studentId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -81,6 +95,7 @@ public class Student {
         this.password = password;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
+        this.enrollments = enrollments;
     }
 
     public Student() {}
