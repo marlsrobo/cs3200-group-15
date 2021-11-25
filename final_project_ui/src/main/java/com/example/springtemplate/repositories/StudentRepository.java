@@ -12,6 +12,6 @@ public interface StudentRepository extends CrudRepository<Student, Integer> {
   @Query(value = "SELECT * FROM students", nativeQuery = true)
   public List<Student> findAllStudents();
 
-  @Query(value = "SELECT * FROM students WHERE students.studentId=:studentId", nativeQuery = true)
+  @Query(value = "SELECT * FROM students WHERE students.student_id=:studentId", nativeQuery = true)
   public Student findStudentById(@Param("studentId") Integer studentId);
 }

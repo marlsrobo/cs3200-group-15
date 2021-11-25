@@ -1,4 +1,4 @@
-import Users from "./users";
+import Students from "./students";
 
 const {HashRouter, Route} = window.ReactRouterDOM;
 

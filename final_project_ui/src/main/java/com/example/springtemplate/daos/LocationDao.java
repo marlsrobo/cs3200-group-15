@@ -19,9 +19,9 @@ public class LocationDao {
     }
 
 
-    @GetMapping("/locations/{id}")
-    public Location findLocationById(@PathVariable("id") Integer id) {
-        return repository.findLocationById(id);
+    @GetMapping("/locations/{locationId}")
+    public Location findLocationById(@PathVariable("locationId") Integer locationId) {
+        return repository.findLocationById(locationId);
     }
 
 
@@ -32,9 +32,9 @@ public class LocationDao {
 
     @PutMapping("/locations/{locationId}")
     public Location updateLocation(
-            @PathVariable("locationId") Integer id,
+            @PathVariable("locationId") Integer locationId,
             @RequestBody Location locationUpdates) {
-        Location location = repository.findLocationById(id);
+        Location location = repository.findLocationById(locationId);
 
         location.setVirtual(locationUpdates.getVirtual());
         location.setCampus(locationUpdates.getCampus());
@@ -43,9 +43,9 @@ public class LocationDao {
         return repository.save(location);
     }
 
-    @DeleteMapping("/locations/{id}")
+    @DeleteMapping("/locations/{locationId}")
     public void deleteLocation(
-            @PathVariable("id") Integer id) {
-        repository.deleteById(id);
+            @PathVariable("locationId") Integer locationId) {
+        repository.deleteById(locationId);
     }
 }

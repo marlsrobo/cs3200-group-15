@@ -11,6 +11,6 @@ public interface ClubRepository extends CrudRepository<Club, Integer> {
     @Query(value = "SELECT * FROM clubs", nativeQuery = true)
     public List<Club> findAllClubs();
 
-    @Query(value = "SELECT * FROM clubs WHERE clubs.clubId=:clubId", nativeQuery = true)
+    @Query(value = "SELECT * FROM clubs WHERE clubs.club_id=:clubId", nativeQuery = true)
     public Club findClubById(@Param("clubId") Integer clubId);
 }
