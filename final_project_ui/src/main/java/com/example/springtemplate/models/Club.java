@@ -16,7 +16,7 @@ public class Club {
     @JsonIgnore
     private Location location;
 
-    @OneToMany(mappedBy = "enrollment")
+    @OneToMany(mappedBy = "club")
     @JsonIgnore
     private List<Enrollment> enrollments;
 

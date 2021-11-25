@@ -6,6 +6,7 @@ import com.sun.xml.bind.v2.model.core.ID;
 
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
+import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
 
 @Entity
 @Table(name="enrollments")
-public class Enrollment {
+public class Enrollment implements Serializable {
 
     @ManyToOne
     @JsonIgnore

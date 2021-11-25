@@ -11,6 +11,7 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer studentId;
+
     private String firstName;
     private String lastName;
     private String username;
@@ -18,7 +19,7 @@ public class Student {
     private String email;
     private Date dateOfBirth;
 
-    @OneToMany(mappedBy = "enrollment")
+    @OneToMany(mappedBy = "student")
     @JsonIgnore
     private List<Enrollment> enrollments;
 

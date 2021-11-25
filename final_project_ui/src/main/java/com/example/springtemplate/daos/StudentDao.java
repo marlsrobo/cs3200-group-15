@@ -9,38 +9,31 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class StudentDao {
     @Autowired
     StudentRepository repository;
 
-    @GetMapping("/students")
+    @PostMapping("/api/students")
+    public Student createStudent(@RequestBody Student student) {
+        return repository.save(student);
+    }
+
+    @GetMapping("/api/students")
     public List<Student> findAllStudents() {
         return repository.findAllStudents();
     }
 
-
-    @GetMapping("/students/{id}")
-    public Student findStudentById(@PathVariable("id") Integer id) {
-        return repository.findStudentById(id);
+    @GetMapping("/api/students/{studentId}")
+    public Student findStudentById(@PathVariable("studentId") Integer studentId) {
+        return repository.findStudentById(studentId);
     }
 
-
-    @GetMapping("/create/student/{fn}/{ln}/{un}/{pw}/{email}/{dob}")
-    public Student createStudent(@PathVariable("fn") String first,
-                                 @PathVariable("ln") String last,
-                                 @PathVariable("un") String uname,
-                                 @PathVariable("pw") String pass,
-                                 @PathVariable("email") String email,
-                                 @PathVariable("dob") Date dob) {
-        Student student = new Student(first, last, uname, pass, email, dob);
-        return repository.save(student);
-    }
-
-    @PutMapping("/students/{studentId}")
+    @PutMapping("/api/students/{studentId}")
     public Student updateStudent(
-            @PathVariable("studentId") Integer id,
+            @PathVariable("studentId") Integer studentId,
             @RequestBody Student studentUpdates) {
-        Student student = repository.findStudentById(id);
+        Student student = repository.findStudentById(studentId);
 
         student.setFirstName(studentUpdates.getFirstName());
         student.setLastName(studentUpdates.getLastName());
@@ -51,9 +44,9 @@ public class StudentDao {
         return repository.save(student);
     }
 
-    @GetMapping("/students/delete/{id}")
+    @DeleteMapping("/api/students/{studentId}")
     public void deleteStudent(
-            @PathVariable("id") Integer id) {
-        repository.deleteById(id);
+            @PathVariable("studentId") Integer studentId) {
+        repository.deleteById(studentId);
     }
 }

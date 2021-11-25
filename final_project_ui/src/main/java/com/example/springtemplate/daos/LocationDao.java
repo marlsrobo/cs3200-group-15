@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class LocationDao {
     @Autowired
     LocationRepository repository;
@@ -24,12 +25,8 @@ public class LocationDao {
     }
 
 
-    @GetMapping("/create/location/{virtual}/{campus}/{building}/{room-num}")
-    public Location createLocation(@PathVariable("virtual") Boolean virtual,
-                                 @PathVariable("campus") String campus,
-                                 @PathVariable("building") String building,
-                                 @PathVariable("room-num") Integer roomNumber) {
-        Location location = new Location(virtual, campus, building, roomNumber);
+    @PostMapping("/locations")
+    public Location createLocation(@RequestBody Location location) {
         return repository.save(location);
     }
 
@@ -46,7 +43,7 @@ public class LocationDao {
         return repository.save(location);
     }
 
-    @GetMapping("/locations/delete/{id}")
+    @DeleteMapping("/locations/{id}")
     public void deleteLocation(
             @PathVariable("id") Integer id) {
         repository.deleteById(id);

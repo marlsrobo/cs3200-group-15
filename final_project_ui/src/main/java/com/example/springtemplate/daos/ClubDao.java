@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class ClubDao {
     @Autowired
     ClubRepository repository;
@@ -17,20 +18,14 @@ public class ClubDao {
         return repository.findAllClubs();
     }
 
-
     @GetMapping("/clubs/{id}")
     public Club findClubById(@PathVariable("id") Integer id) {
         return repository.findClubById(id);
     }
 
 
-    @GetMapping("/create/club/{name}/{category}/{advisor}/{budget}/{capacity}")
-    public Club createClub(@PathVariable("name") String name,
-                                 @PathVariable("category") String category,
-                                 @PathVariable("advisor") String advisor,
-                                 @PathVariable("budget") Integer budget,
-                                 @PathVariable("capacity") Integer capacity) {
-        Club club = new Club(name, category, advisor, budget, capacity);
+    @PostMapping("/clubs")
+    public Club createClub(@RequestBody Club club) {
         return repository.save(club);
     }
 
@@ -48,7 +43,7 @@ public class ClubDao {
         return repository.save(club);
     }
 
-    @GetMapping("/clubs/delete/{id}")
+    @DeleteMapping("/clubs/{id}")
     public void deleteClub(
             @PathVariable("id") Integer id) {
         repository.deleteById(id);

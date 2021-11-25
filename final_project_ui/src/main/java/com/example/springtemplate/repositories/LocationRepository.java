@@ -11,6 +11,6 @@ public interface LocationRepository extends CrudRepository<Location, Integer> {
     @Query(value = "SELECT * FROM locations", nativeQuery = true)
     public List<Location> findAllLocations();
 
-    @Query("SELECT * FROM locations WHERE locations.locationId=:locationId")
+    @Query(value = "SELECT * FROM locations WHERE locations.locationId=:locationId", nativeQuery = true)
     public Location findLocationById(@Param("locationId") Integer locationId);
 }

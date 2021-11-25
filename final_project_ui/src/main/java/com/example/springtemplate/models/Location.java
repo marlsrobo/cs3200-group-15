@@ -20,7 +20,7 @@ public class Location {
     private String building;
     private Integer roomNumber;
 
-    @OneToMany(mappedBy = "club")
+    @OneToMany(mappedBy = "location")
     @JsonIgnore
     private List<Club> clubs;
 
