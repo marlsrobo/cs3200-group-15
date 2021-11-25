@@ -17,7 +17,7 @@ public class Location {
     private Integer locationId;
     private Boolean virtual;
     private String campus;
-    private Integer building;
+    private String building;
     private Integer roomNumber;
 
     @OneToMany(mappedBy = "club")
@@ -48,11 +48,11 @@ public class Location {
         this.campus = campus;
     }
 
-    public Integer getBuilding() {
+    public String getBuilding() {
         return building;
     }
 
-    public void setBuilding(Integer building) {
+    public void setBuilding(String building) {
         this.building = building;
     }
 
@@ -72,12 +72,10 @@ public class Location {
         this.clubs = clubs;
     }
 
-    public Location(Integer locationId, Boolean virtual, String campus, Integer building, Integer roomNumber, List<Club> clubs) {
-        this.locationId = locationId;
+    public Location(Boolean virtual, String campus, String building, Integer roomNumber) {
         this.virtual = virtual;
         this.campus = campus;
         this.building = building;
         this.roomNumber = roomNumber;
-        this.clubs = clubs;
     }
 }

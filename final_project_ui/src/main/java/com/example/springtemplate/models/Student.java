@@ -86,16 +86,13 @@ public class Student {
         this.enrollments = enrollments;
     }
 
-    public Student(Integer studentId, String firstName, String lastName, String username, String password, String email, Date dateOfBirth,
-                   List<Enrollment> enrollments) {
-        this.studentId = studentId;
+    public Student(String firstName, String lastName, String username, String password, String email, Date dateOfBirth) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.password = password;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
-        this.enrollments = enrollments;
     }
 
     public Student() {}

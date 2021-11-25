@@ -1,7 +1,6 @@
 package com.example.springtemplate.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jdk.jfr.Unsigned;
 
 import javax.persistence.*;
 import java.util.List;
@@ -91,10 +90,7 @@ public class Club {
         this.capacity = capacity;
     }
 
-    public Club(Integer clubId, Location location, List<Enrollment> enrollments, String name, String category, String advisor, Integer budget, Integer capacity) {
-        this.clubId = clubId;
-        this.location = location;
-        this.enrollments = enrollments;
+    public Club(String name, String category, String advisor, Integer budget, Integer capacity) {
         this.name = name;
         this.category = category;
         this.advisor = advisor;
