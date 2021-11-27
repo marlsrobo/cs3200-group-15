@@ -13,24 +13,24 @@ public class LocationDao {
     @Autowired
     LocationRepository repository;
 
-    @GetMapping("/locations")
+    @GetMapping("/api/locations")
     public List<Location> findAllLocations() {
         return repository.findAllLocations();
     }
 
 
-    @GetMapping("/locations/{locationId}")
+    @GetMapping("/api/locations/{locationId}")
     public Location findLocationById(@PathVariable("locationId") Integer locationId) {
         return repository.findLocationById(locationId);
     }
 
 
-    @PostMapping("/locations")
+    @PostMapping("/api/locations")
     public Location createLocation(@RequestBody Location location) {
         return repository.save(location);
     }
 
-    @PutMapping("/locations/{locationId}")
+    @PutMapping("/api/locations/{locationId}")
     public Location updateLocation(
             @PathVariable("locationId") Integer locationId,
             @RequestBody Location locationUpdates) {
@@ -43,7 +43,7 @@ public class LocationDao {
         return repository.save(location);
     }
 
-    @DeleteMapping("/locations/{locationId}")
+    @DeleteMapping("/api/locations/{locationId}")
     public void deleteLocation(
             @PathVariable("locationId") Integer locationId) {
         repository.deleteById(locationId);
