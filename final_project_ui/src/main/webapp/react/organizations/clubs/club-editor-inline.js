@@ -1,8 +1,8 @@
 const {useState, useEffect } = React;
 const {Link} = window.ReactRouterDOM;
 
-const CourseEditorInline = ({course, deleteCourse, updateCourse}) => {
-    const [courseCopy, setCourseCopy] = useState(course)
+const ClubEditorInline = ({club, deleteClub, updateClub}) => {
+    const [clubCopy, setClubCopy] = useState(club)
     const [editing, setEditing] = useState(false)
     return(
         <div>
@@ -12,11 +12,11 @@ const CourseEditorInline = ({course, deleteCourse, updateCourse}) => {
                     <div className="col">
                         <input
                             className="form-control"
-                            value={courseCopy.title}
-                            onChange={(e)=>setCourseCopy(courseCopy => ({...courseCopy, title: e.target.value}))}/>
+                            value={clubCopy.title}
+                            onChange={(e)=>setClubCopy(clubCopy => ({...clubCopy, title: e.target.value}))}/>
                     </div>
                     <div className="col-1">
-                        <Link to={`/courses/${courseCopy.id}/sections`}>
+                        <Link to={`/clubs/${clubCopy.clubId}/sections`}>
                             Sections
                         </Link>
                     </div>
@@ -24,12 +24,12 @@ const CourseEditorInline = ({course, deleteCourse, updateCourse}) => {
                         <i className="fas fa-2x fa-check float-right margin-left-10px"
                            onClick={() => {
                                setEditing(false)
-                               updateCourse(courseCopy.id, courseCopy)
+                               updateClub(clubCopy.clubId, clubCopy)
                            }}></i>
                         <i className="fas fa-2x fa-undo float-right margin-left-10px"
                            onClick={() => setEditing(false)}></i>
                         <i className="fas fa-2x fa-trash float-right margin-left-10px"
-                           onClick={() => deleteCourse(course.id)}></i>
+                           onClick={() => deleteClub(club.clubId)}></i>
                     </div>
                 </div>
             }
@@ -37,12 +37,12 @@ const CourseEditorInline = ({course, deleteCourse, updateCourse}) => {
                 !editing &&
                 <div className="row">
                     <div className="col">
-                        <Link to={`/courses/${courseCopy.id}`}>
-                            {courseCopy.title}
+                        <Link to={`/clubs/${clubCopy.clubId}`}>
+                            {clubCopy.title}
                         </Link>
                     </div>
                     <div className="col-1">
-                        <Link to={`/courses/${courseCopy.id}/sections`}>
+                        <Link to={`/clubs/${clubCopy.clubId}/sections`}>
                             Sections
                         </Link>
                     </div>
@@ -56,4 +56,4 @@ const CourseEditorInline = ({course, deleteCourse, updateCourse}) => {
     )
 }
 
-export default CourseEditorInline;
+export default ClubEditorInline;
