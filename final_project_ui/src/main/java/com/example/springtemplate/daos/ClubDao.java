@@ -13,22 +13,22 @@ public class ClubDao {
     @Autowired
     ClubRepository repository;
 
-    @GetMapping("/clubs")
-    public List<Club> findAllClubs() {
-        return repository.findAllClubs();
-    }
-
-    @GetMapping("/clubs/{clubId}")
-    public Club findClubById(@PathVariable("clubId") Integer clubId) {
-        return repository.findClubById(clubId);
-    }
-
-    @PostMapping("/clubs")
+    @PostMapping("/api/clubs")
     public Club createClub(@RequestBody Club club) {
         return repository.save(club);
     }
 
-    @PutMapping("/clubs/{clubId}")
+    @GetMapping("/api/clubs")
+    public List<Club> findAllClubs() {
+        return repository.findAllClubs();
+    }
+
+    @GetMapping("/api/clubs/{clubId}")
+    public Club findClubById(@PathVariable("clubId") Integer clubId) {
+        return repository.findClubById(clubId);
+    }
+
+    @PutMapping("/api/clubs/{clubId}")
     public Club updateClub(
             @PathVariable("clubId") Integer clubId,
             @RequestBody Club clubUpdates) {
@@ -42,7 +42,7 @@ public class ClubDao {
         return repository.save(club);
     }
 
-    @DeleteMapping("/clubs/{clubId}")
+    @DeleteMapping("/api/clubs/{clubId}")
     public void deleteClub(
             @PathVariable("clubId") Integer clubId) {
         repository.deleteById(clubId);

@@ -12,12 +12,12 @@ const ClubEditorInline = ({club, deleteClub, updateClub}) => {
                     <div className="col">
                         <input
                             className="form-control"
-                            value={clubCopy.title}
-                            onChange={(e)=>setClubCopy(clubCopy => ({...clubCopy, title: e.target.value}))}/>
+                            value={clubCopy.name}
+                            onChange={(e)=>setClubCopy(clubCopy => ({...clubCopy, name: e.target.value}))}/>
                     </div>
                     <div className="col-1">
-                        <Link to={`/clubs/${clubCopy.clubId}/sections`}>
-                            Sections
+                        <Link to={`/api/clubs/${clubCopy.clubId}/students`}>
+                            Students of Club
                         </Link>
                     </div>
                     <div className="col-2">
@@ -37,13 +37,13 @@ const ClubEditorInline = ({club, deleteClub, updateClub}) => {
                 !editing &&
                 <div className="row">
                     <div className="col">
-                        <Link to={`/clubs/${clubCopy.clubId}`}>
-                            {clubCopy.title}
+                        <Link to={`/api/clubs/${clubCopy.clubId}`}>
+                            {clubCopy.name}
                         </Link>
                     </div>
                     <div className="col-1">
-                        <Link to={`/clubs/${clubCopy.clubId}/sections`}>
-                            Sections
+                        <Link to={`/api/clubs/${clubCopy.clubId}/students`}>
+                            Students of Club
                         </Link>
                     </div>
                     <div className="col-2">

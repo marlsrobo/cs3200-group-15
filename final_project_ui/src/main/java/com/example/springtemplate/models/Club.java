@@ -90,6 +90,7 @@ public class Club {
         this.capacity = capacity;
     }
 
+
     public Club(String name, String category, String advisor, Integer budget, Integer capacity) {
         this.name = name;
         this.category = category;
@@ -97,4 +98,6 @@ public class Club {
         this.budget = budget;
         this.capacity = capacity;
     }
+
+    public Club() {super();}
 }

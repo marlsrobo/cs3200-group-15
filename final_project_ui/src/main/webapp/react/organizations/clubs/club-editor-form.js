@@ -31,11 +31,31 @@ const ClubEditorForm = () => {
                 className="form-control margin-bottom-10px"
                 readOnly={true}
                 value={club.clubId}/>
-            <label>Title</label>
+            <label>Name</label>
             <input
                 className="form-control margin-bottom-10px"
-                onChange={(e) => setClub(club => ({...club, title: e.target.value}))}
-                value={club.title}/>
+                onChange={(e) => setClub(club => ({...club, name: e.target.value}))}
+                value={club.name}/>
+             <label>Category</label>
+             <input
+                className="form-control margin-bottom-10px"
+                onChange={(e) => setClub(club => ({...club, category: e.target.value}))}
+                value={club.category}/>
+            <label>Advisor</label>
+            <input
+                className="form-control margin-bottom-10px"
+                onChange={(e) => setClub(club => ({...club, advisor: e.target.value}))}
+                value={club.advisor}/>
+            <label>Budget</label>
+            <input
+                className="form-control margin-bottom-10px"
+                onChange={(e) => setClub(club => ({...club, budget: e.target.value}))}
+                value={club.budget}/>
+            <label>Capacity</label>
+            <input
+                className="form-control margin-bottom-10px"
+                onChange={(e) => setClub(club => ({...club, capacity: e.target.value}))}
+                value={club.capacity}/>
             <button
                 onClick={() => updateClub(club.clubId, club)}
                 className="btn btn-success btn-block">Save</button>

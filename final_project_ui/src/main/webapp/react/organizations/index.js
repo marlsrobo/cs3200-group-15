@@ -1,7 +1,7 @@
 import ClubList from "./clubs/club-list";
 import StudentList from "./students/student-list";
 import ClubEditorForm from "./clubs/club-editor-form";
-import StudentEditorForm from "./students/student-editor-form";
+import StudentEditorForm from "./students/student-form-editor";
 
 const {HashRouter, Link, Route} = window.ReactRouterDOM;
  
