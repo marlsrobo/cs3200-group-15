@@ -15,6 +15,7 @@ import java.util.List;
 
 @Entity
 @Table(name="enrollments")
+@IdClass(EnrollmentPk.class)
 public class Enrollment implements Serializable {
 
     @ManyToOne
@@ -60,5 +61,7 @@ public class Enrollment implements Serializable {
         this.club = club;
         this.membershipStatus = membershipStatus;
     }
+
+    public Enrollment() {}
 }
 

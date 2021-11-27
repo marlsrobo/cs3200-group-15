@@ -1,13 +1,14 @@
 package com.example.springtemplate.repositories;
 
 import com.example.springtemplate.models.Enrollment;
+import com.example.springtemplate.models.EnrollmentPk;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface EnrollmentRepository extends CrudRepository<Enrollment, Integer> {
+public interface EnrollmentRepository extends CrudRepository<Enrollment, EnrollmentPk> {
     @Query(value = "SELECT * FROM enrollments", nativeQuery = true)
     public List<Enrollment> findAllEnrollments();
 

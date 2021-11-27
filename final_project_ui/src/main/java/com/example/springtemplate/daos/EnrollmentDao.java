@@ -24,7 +24,7 @@ public class EnrollmentDao {
     @GetMapping("/api/enrollments/{studentId}/{clubId}")
     public Enrollment findEnrollmentBySuperKey(@PathVariable("studentId") Integer studentId,
                                          @PathVariable("clubId") Integer clubId) {
-        return repository.findEnrollmentsSuperKey(studentId, clubId);
+        return repository.findEnrollmentSuperKey(studentId, clubId);
     }
 
     @PostMapping("/api/enrollments")
@@ -37,7 +37,7 @@ public class EnrollmentDao {
             @PathVariable("studentId") Integer studentId,
             @PathVariable("clubId") Integer clubId,
             @RequestBody Enrollment enrollmentUpdates) {
-        Enrollment enrollment = repository.findEnrollmentsSuperKey(studentId, clubId);
+        Enrollment enrollment = repository.findEnrollmentSuperKey(studentId, clubId);
 
         enrollment.setStudent(enrollmentUpdates.getStudent());
         enrollment.setClub(enrollmentUpdates.getClub());

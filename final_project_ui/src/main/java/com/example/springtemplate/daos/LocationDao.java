@@ -24,7 +24,6 @@ public class LocationDao {
         return repository.findLocationById(locationId);
     }
 
-
     @PostMapping("/api/locations")
     public Location createLocation(@RequestBody Location location) {
         return repository.save(location);
