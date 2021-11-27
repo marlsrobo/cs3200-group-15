@@ -1,26 +1,26 @@
 const {useState, useEffect} = React
 const {useParams} = window.ReactRouterDOM;
-const COURSE_URL = "http://localhost:8080/api/courses"
+const CLUB_URL = "http://localhost:8080/api/clubs"
 
 const CourseEditor = (
     {
         schema = {
             title: {type: "text"},
-            // id: {type: "text"}
+            // clubId: {type: "text"}
         }
     }) => {
     const [item, setItem] = useState({})
-    const {id} = useParams()
+    const {clubId} = useParams()
     useEffect(() => {
-        findById(id)
+        findById(clubId)
     }, []);
-    const findById = (id) =>
-        fetch(`${COURSE_URL}/${id}`)
+    const findById = (clubId) =>
+        fetch(`${CLUB_URL}/${clubId}`)
             .then(response => response.json())
             .then(item => setItem(item))
     return (
         <div>
-            <h2>Course Editor {id}</h2>
+            <h2>Course Editor {clubId}</h2>
             {JSON.stringify(item)}
             <ul className="list-group">
                 {

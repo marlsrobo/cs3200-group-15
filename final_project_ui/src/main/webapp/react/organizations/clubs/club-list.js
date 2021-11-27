@@ -3,8 +3,11 @@ import clubService from "./club-service"
 
 const CLUB_URL = "http://localhost:8080/api/clubs"
 const { useState, useEffect } = React;
+const {Link, useHistory} = window.ReactRouterDOM;
+
 
 const ClubList = () => {
+    const history = useHistory()
     const [clubs, setClubs] = useState([])
     const [newClub, setNewClub] = useState({})
     useEffect(() => {
@@ -13,7 +16,7 @@ const ClubList = () => {
     const createClub = (club) =>
         clubService.createClub(club)
             .then(club => {
-                setNewClub({title:''})
+                setNewClub({name:''})
                 setClubs(clubs => ([...clubs, club]))
             })
     const updateClub = (clubId, newClub) =>
@@ -31,14 +34,9 @@ const ClubList = () => {
             <ul className="list-group">
                 <li className="list-group-item">
                     <div className="row">
-                        <div className="col">
-                            <input placeholder="Club Title"
-                                   title="Please enter a title for the club" className="form-control" value={newClub.title}
-                                   onChange={(e) => setNewClub(newClub => ({...newClub, title: e.target.value}))}/>
-                        </div>
-                        <div className="col-3">
-                            <i className="fas fa-plus fa-2x float-right" onClick={() => createClub(newClub)}></i>
-                        </div>
+                        <button onClick={() => history.push("/clubs/new")}>
+                                        Add Club
+                                    </button>
                     </div>
                 </li>
             {

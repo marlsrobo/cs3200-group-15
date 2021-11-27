@@ -11,8 +11,6 @@ import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
 
-// TODO FIGURE OUT HOW TO INDICATE PRIMARY KEY AS SUPERKEY
-
 @Entity
 @Table(name="enrollments")
 @IdClass(EnrollmentPk.class)

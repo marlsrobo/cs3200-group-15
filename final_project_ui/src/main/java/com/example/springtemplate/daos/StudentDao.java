@@ -31,7 +31,8 @@ public class StudentDao {
         return studentRepository.save(student);
     }
 
-    @PostMapping("/api/courses/{clubId}/students/{mshipStatus}")
+
+    @PostMapping("/api/clubs/{clubId}/students/{mshipStatus}")
     public Student createStudentForClub(
             @PathVariable("clubId") Integer clubId,
             @PathVariable("mshipStatus") String mshipStatus,
@@ -50,7 +51,7 @@ public class StudentDao {
         return studentRepository.save(student);
     }
 
-    @GetMapping("/api/courses/{clubId}/students")
+    @GetMapping("/api/clubs/{clubId}/students")
     public List<Student> findStudentsForClub(
             @PathVariable("clubId") Integer clubId) {
         List<Enrollment> enrollments = enrollmentRepository.findEnrollmentsByClubId(clubId);

@@ -2,6 +2,7 @@ package com.example.springtemplate.repositories;
 
 import com.example.springtemplate.models.Enrollment;
 import com.example.springtemplate.models.EnrollmentPk;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -22,7 +23,8 @@ public interface EnrollmentRepository extends CrudRepository<Enrollment, Enrollm
     public Enrollment findEnrollmentSuperKey(@Param("studentId") Integer studentId,
                                               @Param("clubId") Integer clubId);
 
-    @Query("DELETE FROM enrollments WHERE enrollments.student_id=:studentId AND enrollments.club_id=:clubId")
+    @Modifying
+    @Query(value = "DELETE FROM enrollments WHERE enrollments.student_id=:studentId AND enrollments.club_id=:clubId", nativeQuery = true)
     public void deleteEnrollmentBySuperKey(@Param("studentId") Integer studentId,
                                            @Param("clubId") Integer clubId);
 }

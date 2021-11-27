@@ -49,13 +49,13 @@ const ClubEditorForm = () => {
             <label>Budget</label>
             <input
                 className="form-control margin-bottom-10px"
-                onChange={(e) => setClub(club => ({...club, budget: e.target.value}))}
-                value={club.budget}/>
+                value={club.budget}
+                onChange={(e) => setClub(club => ({...club, budget: parseInt(e.target.value)}))}/>
             <label>Capacity</label>
             <input
                 className="form-control margin-bottom-10px"
-                onChange={(e) => setClub(club => ({...club, capacity: e.target.value}))}
-                value={club.capacity}/>
+                value={club.capacity}
+                onChange={(e) => setClub(club => ({...club, capacity: parseInt(e.target.value)}))}/>
             <button
                 onClick={() => updateClub(club.clubId, club)}
                 className="btn btn-success btn-block">Save</button>
