@@ -15,7 +15,7 @@ public class Location {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer locationId;
-    private Boolean virtual;
+    private Boolean inPerson;
     private String campus;
     private String building;
     private Integer roomNumber;
@@ -32,12 +32,12 @@ public class Location {
         this.locationId = locationId;
     }
 
-    public Boolean getVirtual() {
-        return virtual;
+    public Boolean getInPerson() {
+        return inPerson;
     }
 
-    public void setVirtual(Boolean virtual) {
-        this.virtual = virtual;
+    public void setInPerson(Boolean inPerson) {
+        this.inPerson = inPerson;
     }
 
     public String getCampus() {
@@ -72,8 +72,8 @@ public class Location {
         this.clubs = clubs;
     }
 
-    public Location(Boolean virtual, String campus, String building, Integer roomNumber) {
-        this.virtual = virtual;
+    public Location(Boolean inPerson, String campus, String building, Integer roomNumber) {
+        this.inPerson = inPerson;
         this.campus = campus;
         this.building = building;
         this.roomNumber = roomNumber;

@@ -35,7 +35,7 @@ public class LocationDao {
             @RequestBody Location locationUpdates) {
         Location location = repository.findLocationById(locationId);
 
-        location.setVirtual(locationUpdates.getVirtual());
+        location.setInPerson(locationUpdates.getInPerson());
         location.setCampus(locationUpdates.getCampus());
         location.setBuilding(locationUpdates.getBuilding());
         location.setRoomNumber(locationUpdates.getRoomNumber());
