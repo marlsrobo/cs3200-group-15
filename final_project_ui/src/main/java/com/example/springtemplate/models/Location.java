@@ -78,4 +78,6 @@ public class Location {
         this.building = building;
         this.roomNumber = roomNumber;
     }
+
+    public Location() {}
 }

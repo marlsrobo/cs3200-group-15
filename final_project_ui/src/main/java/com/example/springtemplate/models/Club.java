@@ -13,6 +13,7 @@ public class Club {
     private Integer clubId;
 
     @ManyToOne
+    @JoinColumn(name="location_id", nullable = false)
     @JsonIgnore
     private Location location;
 

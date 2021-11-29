@@ -17,17 +17,20 @@ import java.util.List;
 public class Enrollment implements Serializable {
 
     @ManyToOne
+    @JoinColumn(name="student_id", nullable = false)
     @JsonIgnore
     @Id
     private Student student;
 
     @ManyToOne
+    @JoinColumn(name="club_id", nullable = false)
     @JsonIgnore
     @Id
     private Club club;
 
     @Column(columnDefinition = "ENUM('MEMBER', 'PRESIDENT', 'VICE_PRESIDENT', 'TREASURER', 'SECRETARY', 'INACTIVE')")
     @Enumerated(EnumType.STRING)
+    @JoinColumn(name="membership_status", nullable = false)
     private MembershipStatus membershipStatus;
 
     public Student getStudent() {
