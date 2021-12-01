@@ -23,13 +23,13 @@ public class Club {
 
     @JoinColumn(name="name", nullable = false)
     private String name;
-    @JoinColumn(name="category", nullable = true)
+    @JoinColumn(name="category", nullable = false)
     private String category;
-    @JoinColumn(name="advisor", nullable = true)
+    @JoinColumn(name="advisor", nullable = false)
     private String advisor;
-    @JoinColumn(name="budget", nullable = true)
+    @JoinColumn(name="budget", nullable = false)
     private Integer budget;
-    @JoinColumn(name="capacity", nullable = true)
+    @JoinColumn(name="capacity", nullable = false)
     private Integer capacity;
 
     public Integer getClubId() {
