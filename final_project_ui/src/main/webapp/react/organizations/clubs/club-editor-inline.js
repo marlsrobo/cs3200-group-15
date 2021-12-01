@@ -37,12 +37,12 @@ const ClubEditorInline = ({club, deleteClub, updateClub}) => {
                 !editing &&
                 <div className="row">
                     <div className="col">
-                        <Link to={`/api/clubs/${clubCopy.clubId}`}>
+                        <Link to={`/clubs/${clubCopy.clubId}`}>
                             {clubCopy.name}
                         </Link>
                     </div>
                     <div className="col-1">
-                        <Link to={`/api/clubs/${clubCopy.clubId}/students`}>
+                        <Link to={`/clubs/${clubCopy.clubId}/students`}>
                             Students of Club
                         </Link>
                     </div>

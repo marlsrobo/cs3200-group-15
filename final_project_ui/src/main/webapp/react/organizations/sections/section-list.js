@@ -1,62 +1,62 @@
-import SectionEditorInline from "./section-editor-inline";
-import sectionService, {createSectionForCourse} from "./section-service"
+import LocationEditorInline from "./location-editor-inline";
+import locationService, {createLocationForCourse} from "./location-service"
 
-const COURSE_URL = "http://localhost:8080/api/sections"
+const LOCATION_URL = "http://localhost:8080/api/locations"
 const { useState, useEffect } = React;
 const {Link, useParams, useHistory} = window.ReactRouterDOM;
 
-const SectionList = () => {
-    const [sections, setSections] = useState([])
-    const [newSection, setNewSection] = useState({})
+const LocationList = () => {
+    const [locations, setLocations] = useState([])
+    const [newLocation, setNewLocation] = useState({})
     const {courseId} = useParams()
     useEffect(() => {
-        findSectionsForCourse(courseId)
+        findLocationsForCourse(courseId)
     }, [])
-    const createSectionForCourse = (section) =>
-        sectionService.createSectionForCourse(courseId, section)
-            .then(section => {
-                setNewSection({name:''})
-                setSections(sections => ([...sections, section]))
+    const createLocationForCourse = (location) =>
+        locationService.createLocationForCourse(courseId, location)
+            .then(location => {
+                setNewLocation({name:''})
+                setLocations(locations => ([...locations, location]))
             })
-    const updateSection = (id, newSection) =>
-        sectionService.updateSection(id, newSection)
-            .then(section => setSections(sections => (sections.map(section => section.id === id ? newSection : section))))
-    const findSectionsForCourse = (courseId) =>
-        sectionService.findSectionsForCourse(courseId)
-            .then(sections => setSections(sections))
-    const deleteSection = (id) =>
-        sectionService.deleteSection(id)
-            .then(sections => setSections(sections => sections.filter(section => section.id !== id)))
+    const updateLocation = (id, newLocation) =>
+        locationService.updateLocation(id, newLocation)
+            .then(location => setLocations(locations => (locations.map(location => location.id === id ? newLocation : location))))
+    const findLocationsForCourse = (courseId) =>
+        locationService.findLocationsForCourse(courseId)
+            .then(locations => setLocations(locations))
+    const deleteLocation = (id) =>
+        locationService.deleteLocation(id)
+            .then(locations => setLocations(locations => locations.filter(location => location.id !== id)))
     return(
         <div>
             <h2>
                 <Link onClick={() => history.back()}>
                     <i className="fas fa-arrow-left margin-right-10px"></i>
                 </Link>
-                Sections
+                Locations
             </h2>
             <ul className="list-group">
                 <li className="list-group-item">
                     <div className="row">
                         <div className="col">
-                            <input placeholder="Section Name"
-                                   title="Please enter a name for the section"
+                            <input placeholder="Location Name"
+                                   title="Please enter a name for the location"
                                    className="form-control"
-                                   value={newSection.title}
-                                   onChange={(e) => setNewSection(newSection => ({...newSection, name: e.target.value}))}/>
+                                   value={newLocation.title}
+                                   onChange={(e) => setNewLocation(newLocation => ({...newLocation, name: e.target.value}))}/>
                         </div>
                         <div className="col-2">
-                            <i className="fas float-right fa-plus fa-2x" onClick={() => createSectionForCourse(newSection)}></i>
+                            <i className="fas float-right fa-plus fa-2x" onClick={() => createLocationForCourse(newLocation)}></i>
                         </div>
                     </div>
                 </li>
             {
-                sections.map(section =>
-                    <li key={section.id} className="list-group-item">
-                        <SectionEditorInline key={section._id}
-                                             updateSection={updateSection}
-                                             deleteSection={deleteSection}
-                                             section={section}/>
+                locations.map(location =>
+                    <li key={location.id} className="list-group-item">
+                        <LocationEditorInline key={location._id}
+                                             updateLocation={updateLocation}
+                                             deleteLocation={deleteLocation}
+                                             location={location}/>
                     </li>)
             }
             </ul>
@@ -64,4 +64,4 @@ const SectionList = () => {
     )
 }
 
-export default SectionList;
+export default LocationList;

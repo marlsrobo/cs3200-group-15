@@ -13,7 +13,7 @@ public class Club {
     private Integer clubId;
 
     @ManyToOne
-    @JoinColumn(name="location_id", nullable = false)
+    @JoinColumn(name="location_id", nullable = true)
     @JsonIgnore
     private Location location;
 
@@ -21,10 +21,15 @@ public class Club {
     @JsonIgnore
     private List<Enrollment> enrollments;
 
+    @JoinColumn(name="name", nullable = false)
     private String name;
+    @JoinColumn(name="category", nullable = true)
     private String category;
+    @JoinColumn(name="advisor", nullable = true)
     private String advisor;
+    @JoinColumn(name="budget", nullable = true)
     private Integer budget;
+    @JoinColumn(name="capacity", nullable = true)
     private Integer capacity;
 
     public Integer getClubId() {
