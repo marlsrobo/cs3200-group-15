@@ -17,7 +17,7 @@ const ClubEditorInline = ({club, deleteClub, updateClub}) => {
                     </div>
                     <div className="col-1">
                         <Link to={`/api/clubs/${clubCopy.clubId}/students`}>
-                            Students of Club
+                            Students
                         </Link>
                     </div>
                     <div className="col-2">
@@ -43,7 +43,7 @@ const ClubEditorInline = ({club, deleteClub, updateClub}) => {
                     </div>
                     <div className="col-1">
                         <Link to={`/clubs/${clubCopy.clubId}/students`}>
-                            Students of Club
+                            Students
                         </Link>
                     </div>
                     <div className="col-2">

@@ -1,7 +1,7 @@
 const {useState, useEffect } = React;
 const {Link} = window.ReactRouterDOM;
 
-const InlineStudentEditor = ({student, deleteStudent, updateStudent}) => {
+const StudentEditorInline = ({student, deleteStudent, updateStudent}) => {
     const [studentCopy, setStudentCopy] = useState(student)
     const [editing, setEditing] = useState(false)
     return(
@@ -15,33 +15,33 @@ const InlineStudentEditor = ({student, deleteStudent, updateStudent}) => {
                             value={studentCopy.firstName}
                             onChange={(e)=>setStudentCopy(studentCopy => ({...studentCopy, firstName: e.target.value}))}/>
                     </div>
-                    <div className="col">
-                        <input
+                    <div className="col-1">
+                       <input
                             className="form-control"
                             value={studentCopy.lastName}
                             onChange={(e)=>setStudentCopy(studentCopy => ({...studentCopy, lastName: e.target.value}))}/>
                     </div>
-                    <div className="col">
-                        <input
+                    <div className="col-2">
+                       <input
                             className="form-control"
                             value={studentCopy.username}
                             onChange={(e)=>setStudentCopy(studentCopy => ({...studentCopy, username: e.target.value}))}/>
                     </div>
-                    <div className="col-1">
-                        <Link to={`/students/${studentCopy.id}/blogs`}>
-                            Blogs
+                    <div className="col-3">
+                        <Link to={`/api/students/${studentCopy.studentId}/clubs`}>
+                            Clubs
                         </Link>
                     </div>
-                    <div className="col-2">
+                    <div className="col-4">
                         <i className="fas fa-2x fa-check float-right margin-left-10px"
                            onClick={() => {
                                setEditing(false)
-                               updateStudent(studentCopy.id, studentCopy)
+                               updateStudent(studentCopy.studentId, studentCopy)
                            }}></i>
                         <i className="fas fa-2x fa-undo float-right margin-left-10px"
                            onClick={() => setEditing(false)}></i>
                         <i className="fas fa-2x fa-trash float-right margin-left-10px"
-                           onClick={() => deleteStudent(student.id)}></i>
+                           onClick={() => deleteStudent(student.studentId)}></i>
                     </div>
                 </div>
             }
@@ -49,26 +49,26 @@ const InlineStudentEditor = ({student, deleteStudent, updateStudent}) => {
                 !editing &&
                 <div className="row">
                     <div className="col">
-                        <Link to={`/students/${studentCopy.id}`}>
+                        <Link to={`/students/${studentCopy.studentId}`}>
                             {studentCopy.firstName}
                         </Link>
                     </div>
-                    <div className="col">
-                        <Link to={`/students/${studentCopy.id}`}>
-                            {studentCopy.lastName}
-                        </Link>
-                    </div>
-                    <div className="col">
-                        <Link to={`/students/${studentCopy.id}`}>
-                            {studentCopy.username}
-                        </Link>
-                    </div>
                     <div className="col-1">
-                        <Link to={`/students/${studentCopy.id}/blogs`}>
-                            Blogs
+                                            <Link to={`/students/${studentCopy.studentId}`}>
+                                                {studentCopy.lastName}
+                                            </Link>
+                                        </div>
+                    <div className="col-2">
+                                            <Link to={`/students/${studentCopy.studentId}`}>
+                                                {studentCopy.username}
+                                            </Link>
+                                        </div>
+                    <div className="col-3">
+                        <Link to={`/students/${studentCopy.studentId}/clubs`}>
+                            Clubs
                         </Link>
                     </div>
-                    <div className="col-2">
+                    <div className="col-4">
                         <i className="fas fa-cog fa-2x float-right"
                            onClick={() => setEditing(true)}></i>
                     </div>
@@ -78,4 +78,4 @@ const InlineStudentEditor = ({student, deleteStudent, updateStudent}) => {
     )
 }
 
-export default InlineStudentEditor;
+export default StudentEditorInline;

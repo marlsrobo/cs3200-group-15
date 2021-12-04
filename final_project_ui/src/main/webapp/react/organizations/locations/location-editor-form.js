@@ -2,6 +2,8 @@ import locationService from "./location-service"
 
 const {useState, useEffect} = React
 const {useParams, useHistory} = window.ReactRouterDOM;
+const LOCATION_URL = "http://localhost:8080/api/locations"
+
 
 const LocationEditorForm = () => {
     const [location, setLocation] = useState({})
@@ -10,6 +12,7 @@ const LocationEditorForm = () => {
     useEffect(() => {
         findLocationById(locationId)
     }, []);
+    const createLocation = (location) => locationService.createLocation(location).then(() => history.goBack())
     const findLocationById = (id) =>
         locationService.findLocationById(id)
             .then(location => setLocation(location))
@@ -46,15 +49,6 @@ const LocationEditorForm = () => {
                 className="form-control margin-bottom-10px"
                 value={location.roomNumber}
                 onChange={(e)=>setLocation(location => ({...location, roomNumber: parseInt(e.target.value)}))}/>
-            <label>Semester</label>
-            <select
-                className="form-control margin-bottom-10px"
-                value={location.semester}
-                onChange={(e)=>setLocation(location => ({...location, semester: e.target.value}))}>
-                <option>FALL</option>
-                <option>SPRING</option>
-                <option>SUMMER</option>
-            </select>
             <label className="margin-bottom-10px">
             <input
                 type="checkbox"
@@ -64,8 +58,11 @@ const LocationEditorForm = () => {
             </label>
             <br/>
             <button
+                onClick={() => createLocation(location)}
+                className="btn btn-success btn-block">Create</button>
+            <button
                 onClick={() => updateLocation(location.locationId, location)}
-                className="btn btn-success btn-block">Save</button>
+                className="btn btn-success btn-block margin-left-10px">Save</button>
             <button
                 onClick={() => {
                     history.goBack()
