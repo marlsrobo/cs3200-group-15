@@ -16,11 +16,16 @@ const ClubEditorInline = ({club, deleteClub, updateClub}) => {
                             onChange={(e)=>setClubCopy(clubCopy => ({...clubCopy, name: e.target.value}))}/>
                     </div>
                     <div className="col-1">
+                                            <Link to={`/api/clubs/${clubCopy.clubId}/location`}>
+                                                Location
+                                            </Link>
+                                        </div>
+                    <div className="col-2">
                         <Link to={`/api/clubs/${clubCopy.clubId}/students`}>
                             Students
                         </Link>
                     </div>
-                    <div className="col-2">
+                    <div className="col-3">
                         <i className="fas fa-2x fa-check float-right margin-left-10px"
                            onClick={() => {
                                setEditing(false)
@@ -42,11 +47,16 @@ const ClubEditorInline = ({club, deleteClub, updateClub}) => {
                         </Link>
                     </div>
                     <div className="col-1">
+                        <Link to={`/clubs/${clubCopy.clubId}/location`}>
+                            Location
+                        </Link>
+                    </div>
+                    <div className="col-2">
                         <Link to={`/clubs/${clubCopy.clubId}/students`}>
                             Students
                         </Link>
                     </div>
-                    <div className="col-2">
+                    <div className="col-3">
                         <i className="fas fa-cog fa-2x float-right"
                            onClick={() => setEditing(true)}></i>
                     </div>
