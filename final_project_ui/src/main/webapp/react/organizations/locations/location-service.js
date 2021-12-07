@@ -19,8 +19,8 @@ export const createLocationForClub = (clubId, location) =>
 
 export const findAllLocations = () => fetch(LOCATION_URL).then(response => response.json())
 
-export const findLocationsForCourse = (clubId) =>
-    fetch(`${CLUB_URL}/${clubId}/locations`)
+export const findLocationForClub = (clubId) =>
+    fetch(`${CLUB_URL}/${clubId}/location`)
         .then(response => response.json())
 
 export const findLocationById = (id) =>
@@ -43,8 +43,8 @@ const deleteLocation = (id) =>
 export default {
     createLocation,
     createLocationForClub,
+    findLocationForClub,
     findAllLocations,
-    findLocationsForCourse,
     findLocationById,
     updateLocation,
     deleteLocation
