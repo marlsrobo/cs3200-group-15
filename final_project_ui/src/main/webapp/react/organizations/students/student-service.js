@@ -1,7 +1,7 @@
 const CLUB_URL = "http://localhost:8080/api/clubs"
 const STUDENTS_URL = "http://localhost:8080/api/students"
 
-export const createStudentForCourse = (clubId, student) =>
+export const createStudentForClub = (clubId, student) =>
     fetch(`${CLUB_URL}/${clubId}/students`, {
         method: 'POST',
         body: JSON.stringify(student),
@@ -9,7 +9,7 @@ export const createStudentForCourse = (clubId, student) =>
     })
     .then(response => response.json())
     
-export const findStudentsForCourse = (clubId) =>
+export const findStudentsForClub = (clubId) =>
     fetch(`${CLUB_URL}/${clubId}/students`)
         .then(response => response.json())
 
@@ -34,8 +34,8 @@ export const updateStudent = (studentId, student) =>
     }).then(response => response.json())
 
 export default {
-    createStudentForCourse,
-    findStudentsForCourse,
+    createStudentForClub,
+    findStudentsForClub,
     findAllStudents,
     findStudentById,
     deleteStudent,
