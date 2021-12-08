@@ -14,10 +14,19 @@ import java.util.List;
 public class Location {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JoinColumn(name="location_id", nullable = false)
     private Integer locationId;
+
+    @JoinColumn(name="in_person", nullable = false)
     private Boolean inPerson;
+
+    @JoinColumn(name="campus", nullable = false)
     private String campus;
+
+    @JoinColumn(name="building", nullable = false)
     private String building;
+
+    @JoinColumn(name="room_number", nullable = false)
     private Integer roomNumber;
 
     @OneToMany(mappedBy = "location")

@@ -1,5 +1,6 @@
 package com.example.springtemplate.repositories;
 
+import com.example.springtemplate.models.Club;
 import com.example.springtemplate.models.Location;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

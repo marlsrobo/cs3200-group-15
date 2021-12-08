@@ -1,6 +1,7 @@
 import ClubList from "./clubs/club-list";
 import StudentList from "./students/student-list";
 import LocationList from "./locations/location-list"
+import LocationClubList from "./clubs/location-club-list"
 //import ClubLocationList from "./locations/club-location-list"
 import ClubEditorForm from "./clubs/club-editor-form";
 import StudentEditorForm from "./students/student-form-editor";
@@ -23,6 +24,9 @@ const App = () => {
                                 </Route>
                 <Route path="/locations/:locationId" exact={true}>
                                     <LocationEditorForm/>
+                                </Route>
+                <Route path="/locations/:locationId/clubs" exact={true}>
+                                    <LocationClubList/>
                                 </Route>
                 <Route path={["/students", "/"]} exact={true}>
                                                     <StudentList/>

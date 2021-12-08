@@ -24,6 +24,8 @@ const ClubStudentList = () => {
     const findStudentsForClub = (clubId) =>
         studentService.findStudentsForClub(clubId)
             .then(students => setStudents(students))
+    const findStudentMembershipStatusForClub = (clubId, studentId) =>
+        studentService.findStudentMembershipStatusForClub(clubId, studentId).then(students => setStudents(students))
     const deleteStudent = (studentId) =>
         studentService.deleteStudent(studentId)
             .then(students => setStudents(students => students.filter(student => student.studentId !== studentId)))
@@ -39,12 +41,41 @@ const ClubStudentList = () => {
                 <li className="list-group-item">
                     <div className="row">
                         <div className="col">
-                            <input placeholder="Student Name"
-                                   title="Please enter a name for the student"
+                            <input placeholder="First Name"
                                    className="form-control"
                                    value={newStudent.firstName}
                                    onChange={(e) => setNewStudent(newStudent => ({...newStudent, firstName: e.target.value}))}/>
                         </div>
+                        <div className="col">
+                           <input placeholder="Last Name"
+                                   className="form-control"
+                                   value={newStudent.lastName}
+                                   onChange={(e) => setNewStudent(newStudent => ({...newStudent, lastName: e.target.value}))}/>
+                        </div>
+                        <div className="col">
+                          <input placeholder="Username"
+                              className="form-control"
+                              value={newStudent.username}
+                              onChange={(e) => setNewStudent(newStudent => ({...newStudent, username: e.target.value}))}/>
+                        </div>
+                        <div className="col">
+                           <input placeholder="Password"
+                                   className="form-control"
+                                   value={newStudent.password}
+                                   onChange={(e) => setNewStudent(newStudent => ({...newStudent, password: e.target.value}))}/>
+                        </div>
+                        <div className="col">
+                           <input placeholder="Email"
+                                   className="form-control"
+                                   value={newStudent.email}
+                                   onChange={(e) => setNewStudent(newStudent => ({...newStudent, email: e.target.value}))}/>
+                        </div>
+                        <div className="col">
+                            <input placeholder="Date of Birth"
+                                    className="form-control"
+                                    value={newStudent.dateOfBirth}
+                                    onChange={(e) => setNewStudent(newStudent => ({...newStudent, dateOfBirth: e.target.value}))}/>
+                         </div>
                         <div className="col-2">
                             <i className="fas float-right fa-plus fa-2x" onClick={() => createStudentForClub(newStudent)}></i>
                         </div>

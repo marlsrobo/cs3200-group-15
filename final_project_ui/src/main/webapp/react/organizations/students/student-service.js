@@ -17,6 +17,8 @@ export const findAllStudents = () => fetch(STUDENTS_URL).then(response => respon
 
 export const findStudentById = (studentId) => fetch(`${STUDENTS_URL}/${studentId}`).then(response => response.json())
 
+export const findStudentMembershipStatusForClub = (clubId, studentId) => fetch(`${CLUB_URL}/students/${studentId}`).then(response => response.json())
+
 export const deleteStudent = (studentId) => fetch(`${STUDENTS_URL}/${studentId}`, {method: "DELETE"})
 
 export const createStudent = (student) =>
@@ -36,6 +38,7 @@ export const updateStudent = (studentId, student) =>
 export default {
     createStudentForClub,
     findStudentsForClub,
+    findStudentMembershipStatusForClub,
     findAllStudents,
     findStudentById,
     deleteStudent,

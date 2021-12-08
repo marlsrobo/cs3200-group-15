@@ -39,7 +39,7 @@ const LocationEditorInline = ({location, deleteLocation, updateLocation}) => {
                             onChange={(e)=>setLocationCopy(locationCopy => ({...locationCopy, roomNumber: parseInt(e.target.value)}))}/>
                     </div>
                     <div className="col">
-                                            <Link to={`/api/locations/${locationCopy.locationId}/clubs`}>
+                                            <Link to={`/locations/${locationCopy.locationId}/clubs`}>
                                                 Clubs
                                             </Link>
                                         </div>
@@ -82,7 +82,7 @@ const LocationEditorInline = ({location, deleteLocation, updateLocation}) => {
                         </Link>
                     </div>
                     <div className="col">
-                                            <Link to={`/api/locations/${locationCopy.locationId}/clubs`}>
+                                            <Link to={`/locations/${locationCopy.locationId}/clubs`}>
                                                 Clubs
                                             </Link>
                                         </div>

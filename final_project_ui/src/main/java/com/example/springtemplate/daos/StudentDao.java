@@ -10,6 +10,7 @@ import com.example.springtemplate.repositories.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.Member;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -50,6 +51,14 @@ public class StudentDao {
         clubRepository.save(club);
         return studentRepository.save(student);
     }
+
+    @GetMapping("/api/clubs/{clubId}/students/{studentId}")
+    public MembershipStatus findStudentMembershipStatusForClub(
+            @PathVariable("clubId") Integer clubId,
+            @PathVariable("studentId") Integer studentId) {
+        return enrollmentRepository.findEnrollmentSuperKey(studentId, clubId).getMembershipStatus();
+    }
+
 
     @GetMapping("/api/clubs/{clubId}/students")
     public List<Student> findStudentsForClub(
