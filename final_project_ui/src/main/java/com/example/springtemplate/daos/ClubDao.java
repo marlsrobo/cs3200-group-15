@@ -2,9 +2,11 @@ package com.example.springtemplate.daos;
 
 import com.example.springtemplate.models.Club;
 import com.example.springtemplate.models.Enrollment;
+import com.example.springtemplate.models.Location;
 import com.example.springtemplate.models.MembershipStatus;
 import com.example.springtemplate.models.Student;
 import com.example.springtemplate.repositories.ClubRepository;
+import com.example.springtemplate.repositories.LocationRepository;
 import com.example.springtemplate.repositories.StudentRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,9 @@ public class ClubDao {
     
     @Autowired
     StudentRepository studentRepository;
+
+    @Autowired
+    LocationRepository locationRepository;
 
     @PostMapping("/api/clubs")
     public Club createClub(@RequestBody Club club) {
@@ -42,6 +47,19 @@ public class ClubDao {
         clubEnrollments.add(enrollment);
         club.setEnrollments(clubEnrollments);
         studentRepository.save(student);
+        return clubRepository.save(club);
+    }
+
+    @PostMapping("/api/locations/{locationId}/clubs")
+    public Club createClubForLocation(
+            @PathVariable("locationId") Integer locationId,
+            @RequestBody Club club) {
+        club = clubRepository.save(club);
+        Location location = locationRepository.findLocationById(locationId);
+        List<Club> locationClubs = location.getClubs();
+        locationClubs.add(club);
+        location.setClubs(locationClubs);
+        club.setLocation(location);
         return clubRepository.save(club);
     }
 
