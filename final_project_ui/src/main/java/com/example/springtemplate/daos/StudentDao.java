@@ -2,7 +2,6 @@ package com.example.springtemplate.daos;
 
 import com.example.springtemplate.models.Club;
 import com.example.springtemplate.models.Enrollment;
-import com.example.springtemplate.models.Location;
 import com.example.springtemplate.models.Student;
 import com.example.springtemplate.repositories.ClubRepository;
 import com.example.springtemplate.repositories.EnrollmentRepository;
@@ -38,17 +37,17 @@ public class StudentDao {
 
         student = studentRepository.save(student);
         Club club = clubRepository.findClubById(clubId);
-        Enrollment enrollment = new Enrollment(student, club);
 
-        List<Enrollment> studentEnrollments = student.getEnrollments();
-        studentEnrollments.add(enrollment);
-        student.setEnrollments(studentEnrollments);
+        List<Student> clubStudents = club.getStudents();
+        clubStudents.add(student);
+        club.setStudents(clubStudents);
 
-        List<Enrollment> clubEnrollments = club.getEnrollments();
-        clubEnrollments.add(enrollment);
-        club.setEnrollments(clubEnrollments);
+        List<Club> studentClubs = student.getClubs();
+        studentClubs.add(club);
+        student.setClubs(studentClubs);
 
         clubRepository.save(club);
+        studentRepository.save(student);
         return studentRepository.save(student);
     }
 
@@ -56,23 +55,21 @@ public class StudentDao {
     @GetMapping("/api/clubs/{clubId}/students")
     public List<Student> findStudentsForClub(
             @PathVariable("clubId") Integer clubId) {
-        List<Enrollment> enrollments = enrollmentRepository.findEnrollmentsByClubId(clubId);
-        List<Student> students = new ArrayList<>();
-        for (Enrollment enrollment : enrollments) {
-            students.add(enrollment.getStudent());
-        }
-        return students;
+//        List<Enrollment> enrollments = enrollmentRepository.findEnrollmentsByClubId(clubId);
+//        List<Student> students = new ArrayList<>();
+//        for (Enrollment enrollment : enrollments) {
+//            students.add(enrollment.getStudent());
+//        }
+//        return students;
+
+        Club club = clubRepository.findClubById(clubId);
+        return club.getStudents();
     }
 
     @GetMapping("/api/students/{studentId}/clubs")
     public List<Club> findClubsForStudent(@PathVariable("studentId") Integer studentId) {
         Student student = studentRepository.findStudentById(studentId);
-        List<Enrollment> enrollments = student.getEnrollments();
-        List<Club> clubs = new ArrayList<>();
-        for (Enrollment e : enrollments) {
-            clubs.add(e.getClub());
-        }
-        return clubs;
+        return student.getClubs();
     }
 
     @GetMapping("/api/students")

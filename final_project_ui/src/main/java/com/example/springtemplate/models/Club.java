@@ -3,6 +3,8 @@ package com.example.springtemplate.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -17,9 +19,8 @@ public class Club {
     @JsonIgnore
     private Location location;
 
-    @OneToMany(mappedBy = "club")
-    @JsonIgnore
-    private List<Enrollment> enrollments;
+    @ManyToMany(mappedBy = "clubs")
+    private List<Student> students = new ArrayList<>();
 
     @JoinColumn(name="name", nullable = false)
     private String name;
@@ -52,12 +53,12 @@ public class Club {
         this.location = location;
     }
 
-    public List<Enrollment> getEnrollments() {
-        return enrollments;
+    public List<Student> getStudents() {
+        return this.students;
     }
 
-    public void setEnrollments(List<Enrollment> enrollments) {
-        this.enrollments = enrollments;
+    public void setStudents(List<Student> students) {
+        this.students = students;
     }
 
     public String getName() {

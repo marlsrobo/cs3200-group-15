@@ -31,9 +31,14 @@ public class Student {
     @JoinColumn(name="date_of_birth", nullable = false)
     private Date dateOfBirth;
 
-    @OneToMany(mappedBy = "student")
-    @JsonIgnore
-    private List<Enrollment> enrollments;
+    @ManyToMany
+    @JoinTable(name="enrollment",
+            joinColumns=@JoinColumn(name="student_id",
+                    referencedColumnName="studentId"),
+            inverseJoinColumns=@JoinColumn(name=
+                    "club_id", referencedColumnName="clubId"))
+
+    private List<Club> clubs;
 
     public Integer getStudentId() {
         return studentId;
@@ -91,12 +96,12 @@ public class Student {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public List<Enrollment> getEnrollments() {
-        return enrollments;
+    public List<Club> getClubs() {
+        return this.clubs;
     }
 
-    public void setEnrollments(List<Enrollment> enrollments) {
-        this.enrollments = enrollments;
+    public void setClubs(List<Club> clubs) {
+        this.clubs = clubs;
     }
 
     public Student(String firstName, String lastName, String username, String password, String email, Date dateOfBirth) {
