@@ -15,12 +15,12 @@ const ClubEditorInline = ({club, deleteClub, updateClub}) => {
                             value={clubCopy.name}
                             onChange={(e)=>setClubCopy(clubCopy => ({...clubCopy, name: e.target.value}))}/>
                     </div>
-                    <div className="col-1">
+                    <div className="col">
                                             <Link to={`/clubs/${clubCopy.clubId}/location`}>
                                                 Location
                                             </Link>
                                         </div>
-                    <div className="col-2">
+                    <div className="col">
                         <Link to={`/clubs/${clubCopy.clubId}/students`}>
                             Students
                         </Link>
@@ -46,12 +46,12 @@ const ClubEditorInline = ({club, deleteClub, updateClub}) => {
                             {clubCopy.name}
                         </Link>
                     </div>
-                    <div className="col-1">
+                    <div className="col">
                         <Link to={`/clubs/${clubCopy.clubId}/location`}>
                             Location
                         </Link>
                     </div>
-                    <div className="col-2">
+                    <div className="col">
                         <Link to={`/clubs/${clubCopy.clubId}/students`}>
                             Students
                         </Link>

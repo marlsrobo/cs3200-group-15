@@ -3,7 +3,6 @@ package com.example.springtemplate.daos;
 import com.example.springtemplate.models.Club;
 import com.example.springtemplate.models.Enrollment;
 import com.example.springtemplate.models.Location;
-import com.example.springtemplate.models.MembershipStatus;
 import com.example.springtemplate.models.Student;
 import com.example.springtemplate.repositories.ClubRepository;
 import com.example.springtemplate.repositories.LocationRepository;
@@ -31,21 +30,23 @@ public class ClubDao {
         return clubRepository.save(club);
     }
 
-    @PostMapping("/api/students/{studentId}/clubs/{mshipStatus}")
+    @PostMapping("/api/students/{studentId}/clubs")
     public Club createClubForStudent(
             @PathVariable("studentId") Integer studentId,
-            @PathVariable("mshipStatus") String mshipStatus,
             @RequestBody Club club) {
+
         club = clubRepository.save(club);
         Student student = studentRepository.findStudentById(studentId);
-        Enrollment enrollment = new Enrollment(student, club, MembershipStatus.valueOf(mshipStatus));
-        List<Enrollment> studentEnrollments = student.getEnrollments();
-        studentEnrollments.add(enrollment);
-        student.setEnrollments(studentEnrollments);
+        Enrollment enrollment = new Enrollment(student, club);
 
         List<Enrollment> clubEnrollments = club.getEnrollments();
         clubEnrollments.add(enrollment);
         club.setEnrollments(clubEnrollments);
+
+        List<Enrollment> studentEnrollments = student.getEnrollments();
+        studentEnrollments.add(enrollment);
+        student.setEnrollments(studentEnrollments);
+
         studentRepository.save(student);
         return clubRepository.save(club);
     }

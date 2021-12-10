@@ -2,12 +2,11 @@ import ClubList from "./clubs/club-list";
 import StudentList from "./students/student-list";
 import LocationList from "./locations/location-list"
 import LocationClubList from "./clubs/location-club-list"
-//import ClubLocationList from "./locations/club-location-list"
 import ClubEditorForm from "./clubs/club-editor-form";
 import StudentEditorForm from "./students/student-form-editor";
 import LocationEditorForm from "./locations/location-editor-form";
-import ClubStudentList from "./student/club-student-list";
-
+import ClubStudentList from "./students/club-student-list";
+import StudentClubList from "./clubs/student-club-list";
 
 const {HashRouter, Link, Route} = window.ReactRouterDOM;
  
@@ -25,6 +24,9 @@ const App = () => {
                 <Route path="/locations/:locationId" exact={true}>
                                     <LocationEditorForm/>
                                 </Route>
+                <Route path="/clubs/:clubId/location" exact={true}>
+                                                    <LocationEditorForm/>
+                                                </Route>
                 <Route path="/locations/:locationId/clubs" exact={true}>
                                     <LocationClubList/>
                                 </Route>
@@ -40,6 +42,9 @@ const App = () => {
                 <Route path="/students/:studentId" exact={true}>
                     <StudentEditorForm/>
                 </Route>
+                <Route path="/students/:studentId/clubs" exact={true}>
+                                    <StudentClubList/>
+                                </Route>
             </HashRouter>
         </div>
     );

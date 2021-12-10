@@ -41,7 +41,6 @@ public class EnrollmentDao {
 
         enrollment.setStudent(enrollmentUpdates.getStudent());
         enrollment.setClub(enrollmentUpdates.getClub());
-        enrollment.setMembershipStatus(enrollmentUpdates.getMembershipStatus());
         return repository.save(enrollment);
     }
 

@@ -41,10 +41,17 @@ const ClubEditorForm = () => {
                 onChange={(e) => setClubs(club => ({...club, name: e.target.value}))}
                 value={club.name}/>
              <label>Category</label>
-             <input
+             <select
                 className="form-control margin-bottom-10px"
-                onChange={(e) => setClubs(club => ({...club, category: e.target.value}))}
-                value={club.category}/>
+                value={club.category}
+                onChange={(e)=>setClubs(club => ({...club, category: e.target.value}))}>
+                <option>ACADEMIC</option>
+                <option>ART</option>
+                <option>BUSINESS</option>
+                <option>CULTURAL</option>
+                <option>SOCIAL</option>
+                <option>SPORTS</option>
+            </select>
             <label>Advisor</label>
             <input
                 className="form-control margin-bottom-10px"

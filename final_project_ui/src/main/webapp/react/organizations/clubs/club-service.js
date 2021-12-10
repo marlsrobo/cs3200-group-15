@@ -39,6 +39,10 @@ export const findClubsForLocation = (locationId) =>
     fetch(`${LOCATION_URL}/${locationId}/clubs`)
         .then(response => response.json())
 
+export const findClubsForStudent = (studentId) =>
+    fetch(`${STUDENT_URL}/${studentId}/clubs`)
+        .then(response => response.json())
+
 export const updateClub = (clubId, club) =>
     fetch(`${CLUB_URL}/${clubId}`, {
         method: 'PUT',
@@ -59,6 +63,7 @@ export default {
     findAllClubs,
     findClubById,
     findClubsForLocation,
+    findClubsForStudent,
     updateClub,
     deleteClub
 }

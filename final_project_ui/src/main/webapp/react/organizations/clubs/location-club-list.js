@@ -45,10 +45,17 @@ const LocationClubList = () => {
                                    onChange={(e) => setNewClub(newClub => ({...newClub, name: e.target.value}))}/>
                         </div>
                         <div className="col">
-                           <input placeholder="Category"
-                                   className="form-control"
-                                   value={newClub.category}
-                                   onChange={(e) => setNewClub(newClub => ({...newClub, category: e.target.value}))}/>
+                           <select
+                              className="form-control"
+                              value={newClub.category}
+                              onChange={(e)=>setNewClub(newClub => ({...newClub, category: e.target.value}))}>
+                              <option>ACADEMIC</option>
+                              <option>ART</option>
+                              <option>BUSINESS</option>
+                              <option>CULTURAL</option>
+                              <option>SOCIAL</option>
+                              <option>SPORTS</option>
+                           </select>
                         </div>
                         <div className="col">
                           <input placeholder="Advisor"
@@ -58,12 +65,14 @@ const LocationClubList = () => {
                         </div>
                         <div className="col">
                            <input placeholder="Budget"
+                                   type="number"
                                    className="form-control"
                                    value={newClub.budget}
                                    onChange={(e) => setNewClub(newClub => ({...newClub, budget: e.target.value}))}/>
                         </div>
                         <div className="col">
                            <input placeholder="Capacity"
+                                   type="number"
                                    className="form-control"
                                    value={newClub.capacity}
                                    onChange={(e) => setNewClub(newClub => ({...newClub, capacity: e.target.value}))}/>

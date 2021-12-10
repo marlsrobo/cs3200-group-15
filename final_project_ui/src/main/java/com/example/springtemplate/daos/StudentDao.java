@@ -2,7 +2,7 @@ package com.example.springtemplate.daos;
 
 import com.example.springtemplate.models.Club;
 import com.example.springtemplate.models.Enrollment;
-import com.example.springtemplate.models.MembershipStatus;
+import com.example.springtemplate.models.Location;
 import com.example.springtemplate.models.Student;
 import com.example.springtemplate.repositories.ClubRepository;
 import com.example.springtemplate.repositories.EnrollmentRepository;
@@ -10,9 +10,7 @@ import com.example.springtemplate.repositories.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.lang.reflect.Member;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -33,14 +31,15 @@ public class StudentDao {
     }
 
 
-    @PostMapping("/api/clubs/{clubId}/students/{mshipStatus}")
+    @PostMapping("/api/clubs/{clubId}/students")
     public Student createStudentForClub(
             @PathVariable("clubId") Integer clubId,
-            @PathVariable("mshipStatus") String mshipStatus,
             @RequestBody Student student) {
+
         student = studentRepository.save(student);
         Club club = clubRepository.findClubById(clubId);
-        Enrollment enrollment = new Enrollment(student, club, MembershipStatus.valueOf(mshipStatus));
+        Enrollment enrollment = new Enrollment(student, club);
+
         List<Enrollment> studentEnrollments = student.getEnrollments();
         studentEnrollments.add(enrollment);
         student.setEnrollments(studentEnrollments);
@@ -48,15 +47,9 @@ public class StudentDao {
         List<Enrollment> clubEnrollments = club.getEnrollments();
         clubEnrollments.add(enrollment);
         club.setEnrollments(clubEnrollments);
+
         clubRepository.save(club);
         return studentRepository.save(student);
-    }
-
-    @GetMapping("/api/clubs/{clubId}/students/{studentId}")
-    public MembershipStatus findStudentMembershipStatusForClub(
-            @PathVariable("clubId") Integer clubId,
-            @PathVariable("studentId") Integer studentId) {
-        return enrollmentRepository.findEnrollmentSuperKey(studentId, clubId).getMembershipStatus();
     }
 
 
@@ -69,6 +62,17 @@ public class StudentDao {
             students.add(enrollment.getStudent());
         }
         return students;
+    }
+
+    @GetMapping("/api/students/{studentId}/clubs")
+    public List<Club> findClubsForStudent(@PathVariable("studentId") Integer studentId) {
+        Student student = studentRepository.findStudentById(studentId);
+        List<Enrollment> enrollments = student.getEnrollments();
+        List<Club> clubs = new ArrayList<>();
+        for (Enrollment e : enrollments) {
+            clubs.add(e.getClub());
+        }
+        return clubs;
     }
 
     @GetMapping("/api/students")

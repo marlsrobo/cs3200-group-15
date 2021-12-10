@@ -10,13 +10,25 @@ import java.util.List;
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JoinColumn(name="student_id", nullable = false)
     private Integer studentId;
 
+    @JoinColumn(name="first_name", nullable = false)
     private String firstName;
+
+    @JoinColumn(name="last_name", nullable = false)
     private String lastName;
+
+    @JoinColumn(name="username", nullable = false)
     private String username;
+
+    @JoinColumn(name="password", nullable = false)
     private String password;
+
+    @JoinColumn(name="email", nullable = false)
     private String email;
+
+    @JoinColumn(name="date_of_birth", nullable = false)
     private Date dateOfBirth;
 
     @OneToMany(mappedBy = "student")

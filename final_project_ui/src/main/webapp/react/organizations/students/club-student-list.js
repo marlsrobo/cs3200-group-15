@@ -24,8 +24,6 @@ const ClubStudentList = () => {
     const findStudentsForClub = (clubId) =>
         studentService.findStudentsForClub(clubId)
             .then(students => setStudents(students))
-    const findStudentMembershipStatusForClub = (clubId, studentId) =>
-        studentService.findStudentMembershipStatusForClub(clubId, studentId).then(students => setStudents(students))
     const deleteStudent = (studentId) =>
         studentService.deleteStudent(studentId)
             .then(students => setStudents(students => students.filter(student => student.studentId !== studentId)))
@@ -72,6 +70,7 @@ const ClubStudentList = () => {
                         </div>
                         <div className="col">
                             <input placeholder="Date of Birth"
+                                    type="date"
                                     className="form-control"
                                     value={newStudent.dateOfBirth}
                                     onChange={(e) => setNewStudent(newStudent => ({...newStudent, dateOfBirth: e.target.value}))}/>

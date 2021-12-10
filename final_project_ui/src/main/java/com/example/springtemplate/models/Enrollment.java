@@ -28,11 +28,6 @@ public class Enrollment implements Serializable {
     @Id
     private Club club;
 
-    @Column(columnDefinition = "ENUM('MEMBER', 'PRESIDENT', 'VICE_PRESIDENT', 'TREASURER', 'SECRETARY', 'INACTIVE')")
-    @Enumerated(EnumType.STRING)
-    @JoinColumn(name="membership_status", nullable = false)
-    private MembershipStatus membershipStatus;
-
     public Student getStudent() {
         return student;
     }
@@ -49,18 +44,9 @@ public class Enrollment implements Serializable {
         this.club = club;
     }
 
-    public MembershipStatus getMembershipStatus() {
-        return membershipStatus;
-    }
-
-    public void setMembershipStatus(MembershipStatus membershipStatus) {
-        this.membershipStatus = membershipStatus;
-    }
-
-    public Enrollment(Student student, Club club, MembershipStatus membershipStatus) {
+    public Enrollment(Student student, Club club) {
         this.student = student;
         this.club = club;
-        this.membershipStatus = membershipStatus;
     }
 
     public Enrollment() {}

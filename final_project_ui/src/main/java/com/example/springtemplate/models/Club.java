@@ -23,8 +23,12 @@ public class Club {
 
     @JoinColumn(name="name", nullable = false)
     private String name;
+
+    @Column(columnDefinition = "ENUM('ACADEMIC', 'SOCIAL', 'SPORTS', 'ART', 'BUSINESS', 'CULTURAL')")
+    @Enumerated(EnumType.STRING)
     @JoinColumn(name="category", nullable = false)
-    private String category;
+    private ClubCategory category;
+
     @JoinColumn(name="advisor", nullable = false)
     private String advisor;
     @JoinColumn(name="budget", nullable = false)
@@ -65,11 +69,11 @@ public class Club {
     }
 
     public String getCategory() {
-        return category;
+        return category.toString();
     }
 
     public void setCategory(String category) {
-        this.category = category;
+        this.category = ClubCategory.valueOf(category.toUpperCase());
     }
 
     public String getAdvisor() {
@@ -99,7 +103,7 @@ public class Club {
 
     public Club(String name, String category, String advisor, Integer budget, Integer capacity) {
         this.name = name;
-        this.category = category;
+        this.category = ClubCategory.valueOf(category.toUpperCase());
         this.advisor = advisor;
         this.budget = budget;
         this.capacity = capacity;
