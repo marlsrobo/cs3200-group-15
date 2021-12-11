@@ -19,8 +19,9 @@ public class Club {
     @JsonIgnore
     private Location location;
 
-    @ManyToMany(mappedBy = "clubs")
-    private List<Student> students = new ArrayList<>();
+    @OneToMany(mappedBy = "club")
+    @JsonIgnore
+    private List<Enrollment> enrollments;
 
     @JoinColumn(name="name", nullable = false)
     private String name;
@@ -53,12 +54,12 @@ public class Club {
         this.location = location;
     }
 
-    public List<Student> getStudents() {
-        return this.students;
+    public List<Enrollment> getEnrollments() {
+        return enrollments;
     }
 
-    public void setStudents(List<Student> students) {
-        this.students = students;
+    public void setEnrollments(List<Enrollment> enrollments) {
+        this.enrollments = enrollments;
     }
 
     public String getName() {

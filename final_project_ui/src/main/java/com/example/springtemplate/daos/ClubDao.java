@@ -5,7 +5,6 @@ import com.example.springtemplate.models.Enrollment;
 import com.example.springtemplate.models.Location;
 import com.example.springtemplate.models.Student;
 import com.example.springtemplate.repositories.ClubRepository;
-import com.example.springtemplate.repositories.EnrollmentRepository;
 import com.example.springtemplate.repositories.LocationRepository;
 import com.example.springtemplate.repositories.StudentRepository;
 
@@ -19,15 +18,12 @@ import java.util.List;
 public class ClubDao {
     @Autowired
     ClubRepository clubRepository;
-    
+
     @Autowired
     StudentRepository studentRepository;
 
     @Autowired
     LocationRepository locationRepository;
-
-    @Autowired
-    EnrollmentRepository enrollmentRepository;
 
     @PostMapping("/api/clubs")
     public Club createClub(@RequestBody Club club) {
@@ -41,13 +37,15 @@ public class ClubDao {
 
         club = clubRepository.save(club);
         Student student = studentRepository.findStudentById(studentId);
-        List<Club> studentClubs = student.getClubs();
-        studentClubs.add(club);
-        student.setClubs(studentClubs);
+        Enrollment enrollment = new Enrollment(student, club);
 
-        List<Student> clubStudents = club.getStudents();
-        clubStudents.add(student);
-        club.setStudents(clubStudents);
+        List<Enrollment> clubEnrollments = club.getEnrollments();
+        clubEnrollments.add(enrollment);
+        club.setEnrollments(clubEnrollments);
+
+        List<Enrollment> studentEnrollments = student.getEnrollments();
+        studentEnrollments.add(enrollment);
+        student.setEnrollments(studentEnrollments);
 
         studentRepository.save(student);
         return clubRepository.save(club);
