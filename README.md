@@ -26,7 +26,7 @@ Our first domain object data model is a **Club** which represents a single North
 - clubId (Integer, primary key): the club's unique id
 - locationId (Integer, foreign key): the id of the location that this club meets at regularly
 - name (String): the name of the club
-- category (String): the club's category (e.x. fraternity, sport, religious, etc.)
+- category (ClubCategory): the club's category (e.x. ACADEMIC, SPORTS, etc.)
 - advisor (String): the full name of the academic advisor of the club
 - budget (Unsigned Integer): the club's budget represented in USD
 - capacity (Unsigned Integer): the maximum number of members that can be in the club
@@ -43,11 +43,10 @@ Our other domain object data model is a **Location** which represents a location
 Our user (Student) can be a member of any number of Clubs, and Clubs can have any number of Students as members. Therefore, there is a many-to-many relationship between Clubs and Students. In order to reify the relationship and also include the membership status of a Student for a particular Club, we created an **Enrollment** class. There is a one-to-many relationship between a Club and an Enrollment, and also a one-to-many relationship between a Student and an Enrollment. An Enrollment has the following fields:
 - studentId (Integer, foreign key): the NUID of the student in this enrollment record
 - clubId(Integer, foreign key): the id of the club that the student in this record is a member of
-- membershipStatus (MembershipStatus, foreign key): the membership status (our defined enumeration) of the student for the particular club in this record
 
-For instance, if a student with studentId 1 is the president of a club with clubId 3, the record would be (studentId: 1, clubId: 3, membershipStatus: PRESIDENT). 
+For instance, if a student with studentId 1 is in a club with clubId 3, the record would be (studentId: 1, clubId: 3). 
 
-The **Enrollment** has a superkey comprised of the studentId and clubId fields so that we can ensure that a student can only have 1 membership status per club that they are enrolled in.
+The **Enrollment** has a superkey comprised of the studentId and clubId fields so that we can ensure that a student can only be listed once per club that they are enrolled in.
 
 ### Domain Object to Domain Object Relationship Description  
 
@@ -55,13 +54,13 @@ There is a one-to-many relationship between a Club and a Location because a Club
 
 ### Portable Enumeration Description  
 
-Our enumeration is **MembershipStatus** which represents the membership status of a Student for a Club. The possible values are:
-- MEMBER: the Student is just a member of a club and does not hold any leadership positions
-- PRESIDENT: the Student is the President of the club
-- VICE PRESIDENT: the Student is the Vice President of the club
-- TREASURER: the Student is the Treasurer of the club
-- SECRETARY: the Student is the Secretary of the club
-- INACTIVE: the Student is an inactive member of the club (e.x. they have not participated in a long time, have graduated, etc.)
+Our enumeration is **ClubCategory** which represents the type of category that a Club can be categorized as. The possible values are:
+- ACADEMIC
+- ART
+- BUSINESS
+- CULTURAL
+- SOCIAL
+- SPORTS
 
 ### User Interface Requirements Description
 
