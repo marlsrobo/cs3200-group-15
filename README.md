@@ -1,5 +1,5 @@
 ## Project Name: Northeastern University Clubs
-### Team: Group 15
+### Team: Group 15, CS3200 CRN 15731
 ### Team Members: Shaan Arora, Ilana Druskin, Rithesh Kayathi, Marley Robinson
 </br>  
 
