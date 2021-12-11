@@ -7,6 +7,7 @@ import StudentEditorForm from "./students/student-form-editor";
 import LocationEditorForm from "./locations/location-editor-form";
 import ClubStudentList from "./students/club-student-list";
 import StudentClubList from "./clubs/student-club-list";
+import LocationEditorFormFromClub from "./locations/location-editor-form-from-club";
 
 const {HashRouter, Link, Route} = window.ReactRouterDOM;
  
@@ -25,7 +26,7 @@ const App = () => {
                                     <LocationEditorForm/>
                                 </Route>
                 <Route path="/clubs/:clubId/location" exact={true}>
-                                                    <LocationEditorForm/>
+                                                    <LocationEditorFormFromClub/>
                                                 </Route>
                 <Route path="/locations/:locationId/clubs" exact={true}>
                                     <LocationClubList/>
