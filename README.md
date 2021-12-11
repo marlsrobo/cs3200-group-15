@@ -4,7 +4,7 @@
 </br>  
 
 ### Project Description  
-Our project is a database represenation of clubs at Northeastern. Example clubs may include: Northeastern Women in Technology (NUWIT), Northeastern Skate Club, or any of the fraternities and sororities. Each club has certain attributes that describe it, and students can become members of the clubs with certain levels of membership (e.x. President, Treasurer, Member, etc.).  
+Our project is a database represenation of clubs at Northeastern. Example clubs may include: Northeastern Women in Technology (NUWIT), Northeastern Skate Club, or any of the fraternities and sororities. Each club has certain attributes that describe it, including a reference to where the club meets, and students can become members of the club.
 
 ### UML Class Diagram  
 https://github.com/marlsrobo/cs3200-group-15/blob/04ff9fd8522697eb88c0d151bd3f48a5f0e7deaf/db_design_final_project_UML.pdf
