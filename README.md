@@ -64,11 +64,11 @@ Our enumeration is **ClubCategory** which represents the type of category that a
 
 ### User Interface Requirements Description
 
-**Club List:** a list of all the clubs in the clubs database. For each club, name of the club is shown. A link to all of the students in the club is also displayed.  
+**Club List:** a list of all the clubs in the clubs database. For each club, name of the club is shown. A link to all of the students in the club is also displayed, as well as a link to the location where the club meets.  
 **Club Editor:** an editor form for a single club that allows its fields to be modified. 
 
 **Location List:** a list of all the locations in the locations database. For each location, the campus, building, room number, and in-person fields are shown. A link to all of the clubs that meet at this location are displayed.  
 **Location Editor:** an editor form for a single location that allows its fields to be modified.
 
-**Student List:** a list of all the students in the students database. For each student, the first name, last name, and username fields are shown. A link to all of the clubs that this student are a member of is also shown which will list the membership status of the student in particular clubs.  
+**Student List:** a list of all the students in the students database. For each student, the first name, last name, and username fields are shown. A link to all of the clubs that this student are a member of is also shown.  
 **Student Editor:** an editor form for a single student that allows its fields to be modified.
