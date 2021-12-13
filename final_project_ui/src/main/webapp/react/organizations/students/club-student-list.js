@@ -70,7 +70,6 @@ const ClubStudentList = () => {
                         </div>
                         <div className="col">
                             <input placeholder="Date of Birth"
-                                    type="date"
                                     className="form-control"
                                     value={newStudent.dateOfBirth}
                                     onChange={(e) => setNewStudent(newStudent => ({...newStudent, dateOfBirth: e.target.value}))}/>

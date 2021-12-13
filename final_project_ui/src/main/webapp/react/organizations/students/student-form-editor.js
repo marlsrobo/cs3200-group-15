@@ -62,7 +62,6 @@ const StudentEditorForm = () => {
                 onChange={(e) => setStudents(student => ({...student, email: e.target.value}))}/>
             <label>Date of Birth</label>
             <input
-             //   type="date"
                 className="form-control margin-bottom-10px"
                 value={student.dateOfBirth}
                 onChange={(e) => setStudents(student => ({...student, dateOfBirth: e.target.value}))}/>
