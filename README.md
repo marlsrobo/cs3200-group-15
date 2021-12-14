@@ -6,6 +6,12 @@
 ### Project Description  
 Our project is a database represenation of clubs at Northeastern. Example clubs may include: Northeastern Women in Technology (NUWIT), Northeastern Skate Club, or any of the fraternities and sororities. Each club has certain attributes that describe it, including a reference to where the club meets, and students can become members of the club.
 
+### Problem Statement  
+The problem that we were trying to solve was to aggregate all of the clubs of a school in one location which could be updated whenever needed. The school might want to get a list of all the names of the clubs, find information about a specific club, or know which students are members of which clubs.
+
+### Solution Statement  
+Our solution was to create a relational database that stored information about clubs, students, and the locations where the clubs meet. We created tables for each of these objects, and an additional database to reify the relationship between clubs and students, called enrollments.
+
 ### UML Class Diagram  
 https://github.com/marlsrobo/cs3200-group-15/blob/76614ac3447b8409ce90f5ed428747ffe242e0f3/db_design_final_project_UML.pdf
 
